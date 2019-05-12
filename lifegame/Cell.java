@@ -18,5 +18,10 @@ public class Cell {
 	public void setLive(boolean live) {
 		this.live = live;
 	}
+
+	@Override
+	public String toString() {
+		return Boolean.toString(live);
+	}
 }
 
