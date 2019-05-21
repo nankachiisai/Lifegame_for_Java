@@ -96,7 +96,7 @@ public class Lifegame {
 					else if (lives == 2 || lives == 3) {
 						field.setCell(new Cell(true), i, j);
 					}
-					else if (lives >= 4) {
+					else {
 						field.setCell(new Cell(false), i, j);
 					}
 				}

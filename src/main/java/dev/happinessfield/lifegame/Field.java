@@ -12,30 +12,30 @@ public class Field implements Cloneable {
 		this.x = sizex;
 		this.y = sizey;
 
-		field = new ArrayList<Cell>();
+		field = new ArrayList<>();
 		for (int i = 0; i < this.x * this.y; i++) {
 			field.add(new Cell());
 		}
 	}
 
-	public Cell getCell(int x, int y) throws OutOfFieldException {
+	public Cell getCell(int x, int y) {
 		if (x < 0 || x >= this.x) {
-			throw new OutOfFieldException();
+			throw new OutOfFieldException(x, y);
 		}
 		if (y < 0 || y >= this.y) {
-			throw new OutOfFieldException();
+			throw new OutOfFieldException(x, y);
 		}
 
 		// System.out.println(x + " " + y);
 		return field.get(this.x * y + x);
 	}
 
-	public void setCell(Cell c, int x, int y) throws OutOfFieldException {
+	public void setCell(Cell c, int x, int y) {
 		if (x < 0 || x > this.x) {
-			throw new OutOfFieldException();
+			throw new OutOfFieldException(x, y);
 		}
 		if (y < 0 || y > this.y) {
-			throw new OutOfFieldException();
+			throw new OutOfFieldException(x, y);
 		}
 
 		field.set(this.x * y + x, c);

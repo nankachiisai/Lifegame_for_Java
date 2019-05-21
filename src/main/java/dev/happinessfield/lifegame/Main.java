@@ -6,9 +6,9 @@ import java.io.IOException;
 
 public class Main {
 	public static void main(String[] args) {
-		Lifegame test = new Lifegame(10, 10);
+		Lifegame test = new Lifegame(50, 50);
 
-		int generations = 1;
+		int generations = 50;
 		Gson gson = new Gson();
 		FileWriter fw;
 		for (int i = 0; i < generations; i++) {
