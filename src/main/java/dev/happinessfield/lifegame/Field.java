@@ -14,7 +14,7 @@ public class Field implements Cloneable {
 
 		field = new ArrayList<>();
 		for (int i = 0; i < this.x * this.y; i++) {
-			field.add(new Cell());
+			field.add(null);
 		}
 	}
 
