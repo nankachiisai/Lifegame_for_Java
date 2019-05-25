@@ -12,7 +12,7 @@ let generation = new class {
 	}
 
 	setGen(gen) {
-		if (gen < 0 || gen > 50) {
+		if (gen < 0 || gen >= 50) {
 			throw new Error();
 		}
 		else {
@@ -21,7 +21,7 @@ let generation = new class {
 	}
 }();
 
-let painter = function(json) {
+let painter = json => {
 	// canvasを取得する
 	let canvas = document.getElementById("lifegame").getContext("2d");
 
@@ -52,7 +52,7 @@ let painter = function(json) {
 }
 
 // Fetch JSON File
-let fetchJSON = function(string) {
+let fetchJSON = string => {
 	// JSONファイルを読み込む
 	fetch(string).then(function(response) {
 		return response.json();
@@ -62,12 +62,12 @@ let fetchJSON = function(string) {
 }
 
 // Event Handler
-window.onload = function() {
+window.onload = () => {
 	fetchJSON("gen" + generation.getGen() + ".json");
 	document.getElementById("generation").innerHTML = "generation: " + generation.getGen();
 }
 
-let prev = function() {
+let prev = () => {
 	try {
 		generation.setGen(generation.getGen() - 1);
 	}
@@ -78,7 +78,7 @@ let prev = function() {
 	document.getElementById("generation").innerHTML = "generation: " + generation.getGen();
 }
 
-let next = function() {
+let next = () => {
 	try {
 		generation.setGen(generation.getGen() + 1);
 	}
