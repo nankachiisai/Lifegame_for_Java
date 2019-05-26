@@ -1,6 +1,8 @@
 package dev.happinessfield.lifegame;
 
 import com.google.gson.Gson;
+
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -10,16 +12,24 @@ public class Main {
 
 		int generations = 50;
 		Gson gson = new Gson();
-		FileWriter fw;
+		BufferedWriter bw = null;
 		for (int i = 0; i < generations; i++) {
 			System.out.println("generation " + i + ": " + test.getLivingCells());
 			try {
-				fw = new FileWriter("gen" + i +".json");
-				fw.write(gson.toJson(test));
-				fw.close();
+				bw = new BufferedWriter(new FileWriter("gen" + i +".json"));
+				bw.write(gson.toJson(test));
 			}
 			catch (IOException e) {
 				e.printStackTrace();
+			}
+			finally {
+				if (bw != null) {
+					try {
+						bw.close();
+					}
+					catch (IOException e) {
+					}
+				}
 			}
 			test.step();
 		}
